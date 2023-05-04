@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  web:
+    container_name: 'web'
+    build: ./web
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    
+  redis:
+    image: redislabs/redismod
+    ports:
+      - "6379:6379"
